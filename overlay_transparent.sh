@@ -1,1 +1,0 @@
-ffmpeg -n -i $1 -i $2 -filter_complex "[1:v]format=rgba,colorchannelmixer=aa=0.5[fg];[0][fg]overlay" -c:v libx264 -crf 18 -profile:v main -pix_fmt yuv420p -c:a aac -ac 2 -b:a 128k -movflags faststart overlay.mp4

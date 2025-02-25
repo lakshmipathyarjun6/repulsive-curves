@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.0)
 
-project(self_avoiding)
+project(rcurves)
 
 ### Configure output locations
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -62,7 +62,6 @@ endif()
 
 # == Deps
 add_subdirectory(deps/geometry-central)
-add_subdirectory(deps/polyscope)
 
 # == Build our project stuff
 
@@ -71,7 +70,6 @@ set(SRCS
   src/curve_io.cpp
   src/extra_potentials.cpp
   src/implicit_surface.cpp
-  src/lws_options.cpp
   src/poly_curve_network.cpp
   src/scene_file.cpp
   src/sobo_slobo.cpp
@@ -94,24 +92,11 @@ set(SRCS
   src/spatial/spatial_tree.cpp
   src/spatial/tpe_bvh.cpp
   src/spatial/vertex_body.cpp
-	# add any other source files here
 )
-
-# add_executable(rcurves_app src/lws_app.cpp "${SRCS}")
-# target_include_directories(rcurves_app PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
-# target_include_directories(rcurves_app PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/deps/libgmultigrid/include/")
-# target_link_libraries(rcurves_app geometry-central polyscope)
 
 add_library(rcurves STATIC "${SRCS}")
 target_include_directories(rcurves PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 target_include_directories(rcurves PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/deps/libgmultigrid/include/")
-target_link_libraries(rcurves geometry-central polyscope)
+target_link_libraries(rcurves geometry-central)
 target_compile_options(rcurves PUBLIC -fvisibility=hidden)
-
-add_executable(rcurves_app src/lws_app.cpp)
-target_link_libraries(rcurves_app rcurves)
-
-add_library(rcurves_shared SHARED src/export/mvproduct.cpp)
-target_link_libraries(rcurves_shared rcurves)
-target_compile_options(rcurves_shared PUBLIC -fvisibility=default)
 

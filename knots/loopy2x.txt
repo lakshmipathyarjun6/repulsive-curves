@@ -1,5 +1,0 @@
-curve loopy2x.obj
-repel_curve 4 8
-fix_barycenter
-fix_edgelengths
-

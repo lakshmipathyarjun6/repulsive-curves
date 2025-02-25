@@ -1,6 +1,0 @@
-curve paths-center.obj
-repel_curve 3 6
-repel_surface h-shape.obj 0.05
-fix_special_vertices
-optimize_length 1
-
