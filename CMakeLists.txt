@@ -70,6 +70,7 @@ set(SRCS
   src/curve_io.cpp
   src/extra_potentials.cpp
   src/implicit_surface.cpp
+  src/lws_options.cpp
   src/poly_curve_network.cpp
   src/scene_file.cpp
   src/sobo_slobo.cpp
